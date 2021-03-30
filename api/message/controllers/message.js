@@ -58,4 +58,28 @@ module.exports = {
 
     return sanitizeEntity(entity, { model: strapi.models.message });
   },
+
+    /**
+   * Delete a record.
+   *
+   * @return {Object}
+   */
+  async delete(ctx) {
+    const { id } = ctx.params;
+
+    let entity;
+
+    const [message] = await strapi.services.message.find({
+      id: ctx.params.id,
+      'author.id': ctx.state.user.id,
+    });
+
+    if (!message) {
+      return ctx.unauthorized(`You can't delete this entry`);
+    }
+
+    entity = await strapi.services.message.delete({ id })
+
+    return sanitizeEntity(entity, { model: strapi.models.message });
+  },
 };

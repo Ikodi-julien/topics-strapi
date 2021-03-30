@@ -15,13 +15,16 @@
       "type": "json"
     },
     "author": {
-      "via": "messages",
       "plugin": "users-permissions",
-      "model": "user"
+      "model": "user",
+      "via": "messages"
     },
     "topic": {
       "model": "topic",
       "via": "messages"
+    },
+    "author_name": {
+      "type": "string"
     }
   }
 }

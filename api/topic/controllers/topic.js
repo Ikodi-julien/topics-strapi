@@ -6,7 +6,6 @@ module.exports = {
    *
    * @return {Object}
    */
-
   async create(ctx) {
     let entity;
     if (ctx.is('multipart')) {
@@ -25,7 +24,6 @@ module.exports = {
    *
    * @return {Object}
    */
-
   async update(ctx) {
     const { id } = ctx.params;
 
@@ -48,6 +46,30 @@ module.exports = {
     } else {
       entity = await strapi.services.topic.update({ id }, ctx.request.body);
     }
+
+    return sanitizeEntity(entity, { model: strapi.models.topic });
+  },
+
+      /**
+   * Delete a record.
+   *
+   * @return {Object}
+   */
+  async delete(ctx) {
+    const { id } = ctx.params;
+
+    let entity;
+
+    const [topic] = await strapi.services.topic.find({
+      id: ctx.params.id,
+      'author.id': ctx.state.user.id,
+    });
+
+    if (!topic) {
+      return ctx.unauthorized(`You can't delete this entry`);
+    }
+
+    entity = await strapi.services.topic.delete({ id })
 
     return sanitizeEntity(entity, { model: strapi.models.topic });
   },

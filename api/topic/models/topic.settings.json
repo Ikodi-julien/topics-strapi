@@ -26,12 +26,15 @@
       "via": "topics"
     },
     "author": {
-      "via": "topics",
       "plugin": "users-permissions",
-      "model": "user"
+      "model": "user",
+      "via": "topics"
     },
     "topic_content": {
       "type": "json"
+    },
+    "author_name": {
+      "type": "string"
     }
   }
 }

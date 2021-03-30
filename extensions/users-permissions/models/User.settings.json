@@ -66,12 +66,12 @@
       "type": "string"
     },
     "topics": {
-      "collection": "topic",
-      "via": "author"
+      "via": "author",
+      "collection": "topic"
     },
     "messages": {
-      "collection": "message",
-      "via": "author"
+      "via": "author",
+      "collection": "message"
     },
     "token": {
       "model": "token",

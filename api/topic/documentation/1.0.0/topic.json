@@ -547,6 +547,9 @@
                 "topic": {
                   "type": "string"
                 },
+                "author_name": {
+                  "type": "string"
+                },
                 "published_at": {
                   "type": "string"
                 },
@@ -656,6 +659,9 @@
           "topic_content": {
             "type": "object"
           },
+          "author_name": {
+            "type": "string"
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -684,6 +690,9 @@
           },
           "topic_content": {
             "type": "object"
+          },
+          "author_name": {
+            "type": "string"
           },
           "published_at": {
             "type": "string",
